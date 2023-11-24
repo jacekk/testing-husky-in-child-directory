@@ -18,6 +18,8 @@
   "license": "MIT",
   "homepage": "https://github.com/pchmn/vite-react-ts-ghactions-template",
   "scripts": {
+    "hook-commit-msg": "commitlint",
+    "hook-pre-commit": "yarn lint-staged",
     "dev": "vite",
     "build": "tsc && vite build",
     "build:ci": "tsc && vite build && cp 404.html dist/",
@@ -25,7 +27,7 @@
     "test:watch": "vitest",
     "test:ci": "vitest run --coverage",
     "serve": "vite preview",
-    "prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
+    "prepare": "cd .. && husky install ./my-vite-app/.husky && rm -rf .git/hooks && ln -s ./my-vite-app/.husky .git/hooks",
     "lint": "eslint --cache --fix ."
   },
   "dependencies": {
